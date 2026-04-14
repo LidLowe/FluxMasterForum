@@ -1,0 +1,31 @@
+.body {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+
+    border: solid 3px red;
+}
+
+.body-upper {
+    border: solid 3px greenyellow;
+}
+
+.body-lower {
+    flex: 1;
+
+    display: flex;
+    flex-direction: row;
+
+    border: solid 3px blueviolet;
+}
+
+.body-lower-left {
+    flex: 0 0 150px;
+}
+
+.body-lower-right {
+    flex: 1;
+
+    min-height: 0;
+}

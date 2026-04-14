@@ -1,0 +1,21 @@
+.home {
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px;
+}
+
+.home-header {
+    border: solid 1px;
+}
+
+.home-list {
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px;
+}
+
+.home-list-ann {
+    border: solid 1px;
+}

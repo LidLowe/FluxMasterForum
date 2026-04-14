@@ -1,0 +1,19 @@
+<div class="sidebar">
+	
+	<div class="sidebar-title">
+		Категории
+	</div>
+	
+	<div class="sidebar-list">
+		
+		@for (category of categories; track category.id) {
+			<div class="sidebar-list-cat" (click)="showCategoryThreads(category.id)">
+				{{ category.name }}
+			</div>
+		} @empty {
+			empty
+		}
+		
+	</div>
+	
+</div>

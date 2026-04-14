@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    border: solid 1px;
+}
+
+.navbar-logo {
+
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+
+    border: solid 1px;
+}
+
+.navbar-nav-act {
+    border: solid 1px;
+
+}

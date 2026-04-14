@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit(title, content, category_id)" >
+	
+	<input name="title"     [(ngModel)]="title" required />
+	<input name="content"   [(ngModel)]="content" required />
+	
+	<select name="category" [(ngModel)]="category_id">
+		@for (category of categories; track category.id) {
+			<option [value]="category.id"> {{category.name}} </option>
+		}
+	</select>
+	
+	<button>Submit</button>
+	
+</form>

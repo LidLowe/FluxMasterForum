@@ -1,0 +1,27 @@
+<div class="navbar">
+	<div class="navbar-logo">
+		Logo
+	</div>
+	
+	<div class="navbar-nav">
+		
+		@if (!auth.isLoggedIn()) {
+			<div class="navbar-nav-act">
+				<button routerLink="/sign-in"> Sign-in </button>
+			</div>
+		
+			<div class="navbar-nav-act">
+				<button routerLink="/sign-up"> Sign-up </button>
+			</div>
+		}
+		@else {
+			<div class="navbar-nav-act">
+				<button (click)="logout()">Log-out</button>
+			</div>
+		}
+		
+		<div class="navbar-nav-act">
+			FAQ
+		</div>
+	</div>
+</div>

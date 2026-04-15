@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Thread} from "../../core/services/thread/thread";
 import {ThreadModel} from "../../models/thread.model";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {switchMap} from "rxjs";
+import {forkJoin, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-thread-list',
@@ -20,16 +20,14 @@ export class ThreadList implements OnInit {
 
   ngOnInit(){
     this.route.queryParamMap.pipe(
-      switchMap( (params: ParamMap) =>
-        this.thread
-          .getAll(
+      switchMap( (params) =>
+        this.thread.getAll(
             (params as ParamMap).get("category_id")? Number((params as ParamMap).get("category_id")) : undefined
-          )
+        )
       )
     ).subscribe({
-      next: (data: ThreadModel[]) => this.threads = data as ThreadModel[],
+      next: (data) => this.threads = data as ThreadModel[],
       error: err => alert("An error occurred while threads rendering")
-    });
+    })
   }
-
 }

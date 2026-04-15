@@ -33,6 +33,7 @@ export class Sidebar implements OnInit {
   }
 
   showCategoryThreads(category_id: number) {
-    this.router.navigate([`/threads/?category_id=${category_id}`]);
+    console.log(category_id);
+    this.router.navigate([`/threads`], { queryParams: { category_id: category_id } });
   }
 }

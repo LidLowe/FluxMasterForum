@@ -58,7 +58,7 @@ class CategoryDetailView(APIView):
         category = get_object_or_404(Category, id=id)
         json = CategorySerializer(category).data
 
-        return Response({"get": json})
+        return Response(json)
 
 
 class CategoryListView(APIView):
@@ -87,7 +87,7 @@ class ThreadDetailView(APIView):
         thread = get_object_or_404(Thread, id=id)
         json = ThreadSerializer(thread).data
 
-        return Response({"get": json})
+        return Response(json)
 
     def put(self, request, id):
         if not request.user.is_authenticated:
@@ -133,7 +133,7 @@ class ThreadListView(APIView):
 
         json = ThreadSerializer(threads, many=True).data
 
-        return Response({"get": json})
+        return Response(json)
 
     def post(self, request):
         if not request.user.is_authenticated:
@@ -155,7 +155,7 @@ class PostDetailView(APIView):
         posts = Post.objects.filter(thread=thread)
         json = PostSerializer(posts, many=True).data
 
-        return Response({"get": json})
+        return Response(json)
 
     def put(self, request, id):
         if not request.user.is_authenticated:

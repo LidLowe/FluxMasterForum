@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {forkJoin, switchMap} from "rxjs";
 import { Thread } from "../../core/services/thread/thread";
 import { Post } from "../../core/services/post/post";
@@ -25,15 +25,15 @@ export class ThreadDetail implements OnInit {
   ngOnInit() {
     this.route.paramMap.pipe(
       switchMap(
-        (params) => forkJoin([
+        (params: ParamMap) => forkJoin([
           this.threadService.get(Number(params.get("id"))),
           this.postService.get(Number(params.get("id")))
         ])
       )
     ).subscribe({
-      next: (data: [ThreadModel, PostModel[]]) => {
-        this.thread = data[0];
-        this.posts = data[1];
+      next: (data) => {
+        this.thread = data[0] as ThreadModel;
+        this.posts = data[1] as PostModel[];
       },
       error: err => alert("Произошла ошибка при загрузке постов")
     });

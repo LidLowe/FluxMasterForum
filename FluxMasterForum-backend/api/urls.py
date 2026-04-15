@@ -12,7 +12,7 @@ urlpatterns = [
     path("threads/", ThreadListView.as_view(), name="thread_list"),
 
     path("posts/<int:id>/", PostDetailView.as_view(), name="post_detail"),
-    path("threads/<int:thread_id>/posts/", PostListView.as_view(), name="post_list"),
+    path("threads/<int:thread_id>/posts/", PostDetailView.as_view(), name="post_list"),
     path("posts/", PostListView.as_view(), name="posts"),
 
     path("categories/<int:id>/", CategoryDetailView.as_view(), name="category_detail"),

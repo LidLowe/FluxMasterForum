@@ -1,0 +1,8 @@
+FluxMasterForum-frontend/node_modules/
+FluxMasterForum-frontend/dist/
+FluxMasterForum-frontend/.angular/
+
+FluxMasterForum-backend/venv/
+FluxMasterForum-backend/__pychache__/
+FluxMasterForum-backend/*.pyc
+FluxMasterForum-backend/db.sqlite

@@ -5,7 +5,7 @@ import {ThreadDetail} from "./features/thread-detail/thread-detail";
 import {NewThread} from "./features/new-thread/new-thread";
 import {SignIn} from "./features/sign-in/sign-in";
 import {SignUp} from "./features/sign-up/sign-up";
-
+``
 
 export const routes: Routes = [
 	{ path: "", component: Home },

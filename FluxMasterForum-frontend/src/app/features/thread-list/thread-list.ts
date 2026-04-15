@@ -1,7 +1,7 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {Thread} from "../../core/services/thread/thread";
 import {ThreadModel} from "../../models/thread.model";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {forkJoin, switchMap} from "rxjs";
 
 @Component({
@@ -15,6 +15,8 @@ export class ThreadList implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   protected readonly thread = inject(Thread);
+  protected readonly router = inject(Router);
+  protected readonly cdr = inject(ChangeDetectorRef);
 
   threads: ThreadModel[] = [];
 
@@ -26,8 +28,16 @@ export class ThreadList implements OnInit {
         )
       )
     ).subscribe({
-      next: (data) => this.threads = data as ThreadModel[],
-      error: err => alert("An error occurred while threads rendering")
+      next: (data) => {
+        this.threads = data as ThreadModel[];
+        this.cdr.detectChanges();
+      },
+      error: err => alert("An error oc{curred while threads rendering")
     })
+  }
+
+  showThreadDetails(id: number) {
+    console.log("show thread details activated");
+    this.router.navigate([`/threads/${id}`]);
   }
 }

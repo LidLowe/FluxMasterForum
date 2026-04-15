@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {Category} from "../../core/services/category/category";
 import {Thread} from "../../core/services/thread/thread";
 import {FormsModule} from "@angular/forms";
@@ -16,17 +16,21 @@ export class NewThread implements OnInit {
   protected readonly threadService = inject(Thread);
   protected readonly categoryService = inject(Category);
   protected readonly route = inject(Router);
+  protected readonly cdr = inject(ChangeDetectorRef);
 
-  title:       string = "";
-  content:     string = "";
+  title: string = "";
+  content: string = "";
   category_id: number = 0;
 
-  categories:  CategoryModel[] = [];
+  categories: CategoryModel[] = [];
 
   ngOnInit() {
     this.categoryService.getAll()
       .subscribe({
-        next: (data) => this.categories = data,
+        next: (data) => {
+          this.categories = data;
+          this.cdr.detectChanges();
+        },
         error: err => alert("Произошла ошибка")
       });
   }

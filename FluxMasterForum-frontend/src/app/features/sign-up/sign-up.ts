@@ -14,14 +14,14 @@ export class SignUp {
   protected readonly auth = inject(Auth);
   protected readonly router = inject(Router);
 
-  email:    string = "";
+  email: string = "";
   username: string = "";
   password: string = "";
 
   onSubmit(email: string, username: string, password: string) {
     this.auth.register(email, username, password)
       .subscribe({
-        next: () => this.router.navigate(["/sign-in"]),
+        next: () => this.router.navigate([""]),
         error: err => alert("Произошла ошибка при регистрации")
       });
   }

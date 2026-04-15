@@ -1,7 +1,11 @@
-@if (thread != null) {
-	<h2> {{thread.title}} </h2>
-}
+<div class="thread-detail">
+	
+	@if (thread != null) {
+		<h2> {{thread.title}} </h2>
+	}
+	
+	@for (post of posts; track post.id) {
+		<p> {{post.content}} </p>
+	}
 
-@for (post of posts; track post.id) {
-	<p> {{post.content}} </p>
-}
+</div>
